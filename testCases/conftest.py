@@ -1,8 +1,7 @@
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.service import Service
 import urllib.request
 import pytest
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 
 
 @pytest.fixture(scope='module')
@@ -14,9 +13,10 @@ def setup():
     return driver
 
 
-@pytest.fixture(scope='module')
+@pytest.fixture(autouse=True)
 def internet_check():
     try:
+        # print("Checking connection anil")
         urllib.request.urlopen('https://www.google.com', timeout=2)
         return True
     except Exception as e:

@@ -17,13 +17,18 @@ class HomePage:
         return header_list
 
     def get_more_menu_btn(self):
-        return self.driver.find_element(By.XPATH, '/html/body/div[1]/div/div/header/div[1]/div/div/div/div/div')
+        # script = 'window.getComputedStyle(document.querySelector(".moreMenuBtn iconInitialLoad-ic_Bento"));'
+        # ele = self.driver.execute_script(script)
+        # print(type(ele))
+        return self.driver.find_element(By.XPATH, '//div[@class="moreMenuBtn iconInitialLoad-ic_Bento"]')
 
     def get_search_btn(self):
         return self.driver.find_element(By.XPATH, '//div[@class ="searchWrapper  "]')
 
     def get_language_btn(self):
-        return self.driver.find_element(By.XPATH, '/html/body/div[1]/div/div/header/div[1]/div/span/div[2]')
+        script = 'window.getComputedStyle(document.querySelector("#languageBtn"), "::before");'
+        self.driver.execute_script(script)
+        # return self.driver.find_element(By.XPATH, '//*[@id="languageBtn"]')
 
     def get_login_btn(self):
         return self.driver.find_element(By.XPATH, '//*[text()="Login"]')
