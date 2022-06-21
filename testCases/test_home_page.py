@@ -1,21 +1,26 @@
+import time
+import os
 from selenium import webdriver
 from selenium.webdriver.common.service import Service
 from pageObjects.HomePage import HomePage
 from utilities.readproperties import ReadConfig
+from utilities.customlogger import LogGen
 import pytest
 
 @pytest.fixture(scope='module')
 def hp_obj(setup):
-    site_url = ReadConfig.get_app_url()
-    setup.get('https://www.zee5.com')
+    setup.get(ReadConfig.get_app_url())
     hp = HomePage(setup)
+    setup.maximize_window()
     yield hp
     setup.close()
 
 
 class TestHomePage:
+    logger = LogGen.get_logger()
 
     def test_zee5_logo(self, hp_obj):
+        self.logger.info('STARTED Testing HOME PAGE')
         assert 'ZEE5_logo' in hp_obj.get_zee5_logo()
 
     # def test_home(self, hp_obj):
@@ -66,16 +71,16 @@ class TestHomePage:
     # def test_channels(self, hp_obj):
     #     assert 'Channels' in hp_obj.get_header_list()
 
-    def test_more_menu_btn(self, hp_obj):
-        hp_obj.get_more_menu_btn()
-        assert True
+    # def test_more_menu_btn(self, hp_obj):
+    #     hp_obj.get_more_menu_btn()
+    #     assert True
 
     def test_search_btn(self, hp_obj):
         assert hp_obj.get_search_btn()
 
-    def test_language_btn(self, hp_obj):
-        hp_obj.get_language_btn()
-        assert True
+    # def test_language_btn(self, hp_obj):
+    #     hp_obj.get_language_btn()
+    #     assert True
 
     # def test_login_btn(self, hp_obj):
     #     assert hp_obj.get_login_btn()
@@ -85,3 +90,5 @@ class TestHomePage:
     #
     # def test_hamburger_menu_btn(self, hp_obj):
     #     assert hp_obj.get_hamburger_menu_btn()
+
+

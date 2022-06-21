@@ -17,10 +17,9 @@ class HomePage:
         return header_list
 
     def get_more_menu_btn(self):
-        # script = 'window.getComputedStyle(document.querySelector(".moreMenuBtn iconInitialLoad-ic_Bento"));'
-        # ele = self.driver.execute_script(script)
-        # print(type(ele))
-        return self.driver.find_element(By.XPATH, '//div[@class="moreMenuBtn iconInitialLoad-ic_Bento"]')
+        script = 'window.getComputedStyle(document.querySelector(".iconInitialLoad-ic_Bento"), "::before");'
+        self.driver.execute_script(script)
+        #return self.driver.find_element(By.CSS_SELECTOR, '//div[@class="moreMenuBtn iconInitialLoad-ic_Bento"]')
 
     def get_search_btn(self):
         return self.driver.find_element(By.XPATH, '//div[@class ="searchWrapper  "]')
