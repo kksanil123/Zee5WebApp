@@ -31,6 +31,12 @@ class TestHomePage:
     def test_tvshows(self, headers):
         assert 'TV Shows' in headers
 
+    def test_banner_scroll(self, hp_obj):
+        assert hp_obj.get_banner_scroll()
+
+    def test_banner_click(self, hp_obj):
+        assert hp_obj.get_banner_click()
+
     def test_movies(self, headers):
         assert 'Movies' in headers
 
@@ -76,13 +82,22 @@ class TestHomePage:
         assert hp_obj.get_login_btn()
 
     def test_buyplan_btn(self, hp_obj):
-        assert hp_obj.get_buyplan_btn()
+        assert hp_obj.get_buyplan_btn
 
     def test_hamburger_menu_btn(self, hp_obj):
         assert hp_obj.get_hamburger_menu_btn()
 
-    def test_banner_scroll(self, hp_obj):
-        assert hp_obj.get_banner_scroll()
+    def test_more_menu_btn_click(self, hp_obj):
+        hp_obj.more_btn_hover()
+        assert True
 
-    def test_banner_click(self, hp_obj):
-        assert hp_obj.get_banner_click()
+    # def test_scroll(self, hp_obj):
+    #     assert hp_obj.page_scroll()
+
+    def test_collection_hover(self, hp_obj):
+        hp_obj.collection_hover()
+        assert True
+
+    # def test_change_dis_lang(self, hp_obj):
+    #     hp_obj.change_dis_lang('Marathi')
+    #     assert True

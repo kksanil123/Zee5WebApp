@@ -4,6 +4,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from utilities.readproperties import ReadConfig
 
+
 @pytest.fixture(scope='module')
 def setup():
     opts = Options()
@@ -26,3 +27,5 @@ def internet_check():
         return True
     except Exception as e:
         raise ConnectionError('Please check internet connection Anil')
+
+

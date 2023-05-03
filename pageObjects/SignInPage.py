@@ -1,3 +1,5 @@
+import time
+
 from selenium.webdriver.common.by import By
 
 
@@ -38,3 +40,17 @@ class SignInPage:
         self.driver.find_element(By.XPATH,
                                  '//div[@data-tooltip="My profile"]/parent::div/child::button[text()="Open Menu"]').click()
         return self.driver.find_element(By.XPATH, '//div[text()="Logout"]').click()
+
+    def set_gemail_field(self, email):
+        return self.driver.find_element(By.XPATH, "//input[@type='email']").send_keys(email)
+
+    def click_gnxt_btn(self):
+        return self.driver.find_element(By.XPATH, "//span[text()='Next']").click()
+
+    def set_gpswd_field(self, pswd):
+        return self.driver.find_element(By.XPATH, "//input[@type='password']").send_keys(pswd)
+
+    def click_google_btn(self):
+        self.driver.find_element(By.XPATH,"//div[@id='gbtn']").click()
+        print('@@@@@@@@@@2')
+        return True
